@@ -95,3 +95,13 @@ Gustavo — Projeto de portfólio para a área de Análise de Dados.
 
 GitHub: @Gustavo-010101
 Projeto desenvolvido para aprendizado e demonstração técnica. Todos os dados comerciais utilizados são fictícios.
+## 📸 Demonstração do SalesScope
+
+### Visão geral do Dashboard
+![Visão geral do SalesScope](images/dashboard-geral.png)
+
+### Análise de vendas
+![Gráficos de vendas](images/dashboard-graficos.png)
+
+### Detalhamento dos pedidos
+![Tabela de pedidos](images/dashboard-pedidos.png)
