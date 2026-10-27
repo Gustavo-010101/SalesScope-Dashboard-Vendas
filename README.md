@@ -1,43 +1,97 @@
-# SalesScope — Dashboard de Vendas
+📊 SalesScope — Dashboard de Vendas
+Dashboard interativo de Business Intelligence desenvolvido com Python, MySQL, Pandas, Streamlit e Plotly.
 
-Projeto de portfólio para Analista de Dados: Python, MySQL, SQL, Pandas, Streamlit e Plotly.
+O SalesScope é um projeto de portfólio voltado à análise de desempenho comercial. O aplicativo transforma registros de vendas em indicadores e visualizações que ajudam a identificar tendências, comparar resultados e apoiar decisões de negócio.
+Projeto demonstrativo: a base contém 3.000 pedidos fictícios gerados para fins de estudo. Os resultados não representam vendas reais de uma empresa.
 
-## Funcionalidades
-- KPIs: faturamento, lucro bruto estimado, número de pedidos e ticket médio
-- Gráficos de faturamento mensal, categoria e estado
-- Ranking de produtos, filtros e exportação CSV
-- 3.000 pedidos sintéticos reproduzíveis (seed 42)
+🎯 Objetivo
+Demonstrar competências práticas em SQL, modelagem e consulta de dados, análise exploratória, construção de KPIs e visualização de dados por meio de uma aplicação web interativa.
+✨ Funcionalidades
+- Indicadores comerciais: faturamento, lucro bruto estimado, quantidade de pedidos, ticket médio e margem bruta estimada.
+- Filtros interativos: período, categoria e estado.
+- Evolução temporal: acompanhamento do faturamento por mês e comparação de resultados entre períodos.
+- Análise por segmento: faturamento por categoria e por estado.
+- Ranking de produtos: produtos com maior faturamento, volume vendido e lucro bruto estimado.
+- Tabela de pedidos: consulta detalhada dos registros filtrados.
+- Exportação CSV: download dos dados filtrados para análises adicionais.
+- Interface personalizada: tema escuro com detalhes dourados.
+🛠️ Tecnologias
+Tecnologia	Aplicação no projeto
+Python	Lógica da aplicação e cálculos
+MySQL	Armazenamento dos registros de vendas
+SQL / SQLAlchemy / PyMySQL	Consulta e conexão ao banco de dados
+Pandas	Tratamento, filtros e agregações
+Streamlit	Interface web e componentes interativos
+Plotly	Visualizações de dados
+Git e GitHub	Versionamento e documentação
 
-## Execução local
-1. Instale Python 3.11+ e MySQL 8.0+ (MySQL Workbench é opcional).
-2. Abra o MySQL Workbench e execute `sql/schema.sql` para criar o banco e a tabela.
-3. Confirme que o banco `dashboard_vendas` foi criado.
-4. Copie `.env.example` para `.env` e ajuste usuário/senha/host.
-5. Crie e ative um ambiente virtual:
-   - Windows: `py -m venv .venv` e `.venv\Scripts\activate`
-   - Linux/macOS: `python -m venv .venv` e `source .venv/bin/activate`
-6. Instale dependências: `pip install -r requirements.txt`.
-7. Gere dados: `python generate_data.py`.
-8. Inicie: `streamlit run app.py`.
 
-**Atenção:** `generate_data.py` usa TRUNCATE e substitui os dados existentes da tabela `sales`. Use apenas em banco de demonstração.
+🧮 Indicadores e regras de cálculo
+- Faturamento: quantidade × preço unitário.
+- Lucro bruto estimado: quantidade × (preço unitário − custo unitário).
+- Ticket médio: faturamento ÷ quantidade de pedidos distintos.
+- Margem bruta estimada: lucro bruto estimado ÷ faturamento × 100.
+Observação: o lucro bruto estimado não considera impostos, frete, despesas operacionais ou outras deduções.
+🖥️ Capturas de tela
+Adicione aqui imagens do dashboard em funcionamento. Sugestão de estrutura:
+imagens/
+├── dashboard-geral.png
+├── graficos.png
+└── tabela-pedidos.png
+Após adicionar as imagens, substitua este trecho por:
+![Visão geral do SalesScope](imagens/dashboard-geral.png)
+![Gráficos de análise de vendas](imagens/graficos.png)
+![Tabela detalhada de pedidos](imagens/tabela-pedidos.png)
+🚀 Como executar localmente
+Pré-requisitos
+- Python 3.11 ou superior
+- MySQL Server em execução
+- Banco de dados MySQL acessível
+1. Clonar o repositório
+git clone https://github.com/Gustavo-010101/SalesScope-Dashboard-Vendas.git
+cd SalesScope-Dashboard-Vendas
+2. Criar o ambiente virtual e instalar as dependências
+Windows (PowerShell):
+py -m venv .venv
+.\.venv\Scripts\python.exe -m pip install -r requirements.txt
+3. Configurar o MySQL
+Execute o script sql/schema.sql no MySQL Workbench para criar a estrutura de dados.
 
-## Definições dos indicadores
-- Faturamento = SUM(quantity * unit_price)
-- Lucro bruto estimado = SUM(quantity * (unit_price - unit_cost))
-- Pedidos = COUNT(DISTINCT order_id)
-- Ticket médio = faturamento / pedidos
+Crie um arquivo .env na raiz do projeto com a variável:
+DATABASE_URL=mysql+pymysql://root:SUA_SENHA@localhost:3306/dashboard_vendas?charset=utf8mb4
+Substitua SUA_SENHA por sua senha local. Se ela tiver caracteres especiais, codifique-os corretamente na URL. Nunca publique o arquivo .env ou credenciais reais.
+4. Gerar os dados fictícios
+.\.venv\Scripts\python.exe generate_data.py
+Atenção: use um banco dedicado ao projeto. O script de geração pode substituir dados existentes na tabela de vendas.
 
-## SQL de exemplo
-```sql
-SELECT category, ROUND(SUM(quantity * unit_price), 2) AS revenue
-FROM sales
-GROUP BY category
-ORDER BY revenue DESC;
-```
+5. Iniciar a aplicação
+.\.venv\Scripts\python.exe -m streamlit run app.py
+Abra o endereço exibido no terminal, geralmente http://localhost:8501.
+📁 Estrutura do projeto
+SalesScope-Dashboard-Vendas/
+├── app.py                 # Interface e análises
+├── database.py            # Conexão e leitura de dados do MySQL
+├── generate_data.py       # Geração dos pedidos fictícios
+├── requirements.txt       # Dependências Python
+├── sql/
+│   └── schema.sql         # Estrutura do banco de dados
+├── .streamlit/             # Configuração visual (se incluída)
+├── .env.example           # Exemplo de variáveis de ambiente
+├── .gitignore             # Arquivos excluídos do versionamento
+└── README.md              # Documentação do projeto
+📈 Competências demonstradas
+- Construção de consultas e integração com banco de dados relacional.
+- Limpeza, transformação e agregação de dados com Pandas.
+- Definição e cálculo de indicadores de desempenho comercial.
+- Visualização interativa e comunicação de resultados.
+- Organização, documentação e versionamento de um projeto de dados.
+🔮 Próximas melhorias
+- Disponibilizar uma demonstração pública do aplicativo.
+- Adicionar testes automatizados para as métricas.
+- Implementar indicadores de metas comerciais e alertas.
+- Aprimorar análises comparativas e segmentações.
+👨‍💻 Autor
+Gustavo — Projeto de portfólio para a área de Análise de Dados.
 
-## Publicação
-Publique o repositório no GitHub sem o `.env`. Para colocar o app online, use um MySQL hospedado e configure `DATABASE_URL` nos secrets do Streamlit Community Cloud. A plataforma de hospedagem do banco pode ter custos ou limites de uso.
-
-## Observação
-Todos os dados são fictícios e destinados exclusivamente à demonstração.
+GitHub: @Gustavo-010101
+Projeto desenvolvido para aprendizado e demonstração técnica. Todos os dados comerciais utilizados são fictícios.
