@@ -105,3 +105,17 @@ Projeto desenvolvido para aprendizado e demonstração técnica. Todos os dados 
 
 ### Detalhamento dos pedidos
 ![Tabela de pedidos](images/dashboard-pedidos.png)
+
+
+## 🚀 Acesse o Dashboard Online
+
+O SalesScope é um painel interativo de análise de vendas, desenvolvido com Python, MySQL, Pandas, Streamlit e Plotly.
+
+O aplicativo está hospedado no Streamlit Community Cloud e conectado a um banco MySQL na nuvem.
+
+**[📊 Clique aqui para acessar o SalesScope](https://salesscope-dashboard-vendas.streamlit.app/)**
+
+Explore os indicadores de faturamento, lucro, pedidos e ticket médio, além dos gráficos e filtros interativos.
+
+*Os dados utilizados são fictícios e destinados à demonstração do projeto.*
+  
